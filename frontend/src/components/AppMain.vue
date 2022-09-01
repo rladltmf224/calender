@@ -79,6 +79,13 @@
               ></v-checkbox>
             </v-list-group>
           </v-list>
+          <v-list class="blue-grey lighten-5">
+            <v-list-group :value="true" class="pl-3" @click="goDelete()">
+              <template v-slot:activator>
+                <v-list-item-title>해야할 일</v-list-item-title>
+              </template>
+            </v-list-group>
+          </v-list>
         </v-sheet>
       </v-sheet>
       <!-- 콘텐츠영역 -->
@@ -93,6 +100,7 @@
           @change="change"
           v-if="componentValue == 1"
         ></AppMake>
+        <AppDelete v-if="componentValue == 3"></AppDelete>
       </v-content>
     </v-container>
   </v-app>
@@ -101,9 +109,10 @@
 <script>
 import AppCalendar from './AppCalender.vue';
 import AppMake from './AppMake.vue';
+import AppDelete from './AppDelete.vue';
 export default {
   name: 'AppMain',
-  components: { AppCalendar, AppMake },
+  components: { AppCalendar, AppMake, AppDelete },
   data() {
     return {
       items: [
@@ -135,6 +144,10 @@ export default {
     },
     showVal() {
       console.log('밸루값', this.value);
+    },
+    goDelete() {
+      this.componentValue = 3;
+      console.log(this.componentValue);
     },
   },
 };

@@ -8,7 +8,7 @@
         outlined
       >
         <div class="d-flex justify-center pt-4 pb-6">
-          <h3>가짜연구팀 공유캘린더</h3>
+          <h3>선행연구팀 공유캘린더</h3>
         </div>
         <div class="d-flex flex-column">
           <h5 class="pb-2">아이디</h5>

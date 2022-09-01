@@ -8,6 +8,7 @@ import AppMake from '../components/AppMake.vue';
 import AppTest from '../components/AppTest.vue';
 import AppSlot from '../components/AppSlot.vue';
 import AppTest2 from '../components/AppTest2.vue';
+import AppDelete from '../components/AppDelete.vue';
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/AppSlot',
     name: 'AppSlot',
     component: AppSlot,
+  },
+  {
+    path: '/AppDelete',
+    name: 'AppDelete',
+    component: AppDelete,
   },
   {
     path: '/AppMain2',
