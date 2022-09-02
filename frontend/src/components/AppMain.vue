@@ -11,35 +11,78 @@
         id="side"
       >
         <!-- 탑 -->
-        <v-sheet dark class="primary d-flex justify-center align-center">
-          <h3 class="ma-0" style="padding-top: 50px; padding-bottom: 50px">
-            김이슬님
-          </h3>
-          <v-dialog v-model="dialog" persistent max-width="400">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn text v-bind="attrs" v-on="on">
-                <p class="text-subtitle-1 text-md-h6"></p>
-                <h6 id="logout">
-                  <i class="fa-solid fa-arrow-right-from-bracket pr-1"></i
-                  >로그아웃
-                </h6>
-              </v-btn>
-            </template>
-            <v-card class="pt-3">
-              <v-card-title class="py-3 text-h6 d-flex justify-center">
-                로그아웃 하시겠습니까?
-              </v-card-title>
-              <v-card-actions>
-                <v-btn color="green darken-1" text @click="logOut()">
-                  예
+        <v-sheet dark class="primary">
+          <div class="d-flex justify-center align-center">
+            <v-list-item-avatar>
+              <v-img
+                src="https://randomuser.me/api/portraits/women/85.jpg"
+              ></v-img>
+            </v-list-item-avatar>
+            <h3 class="ma-0" style="padding-top: 50px; padding-bottom: 50px">
+              김이슬님
+            </h3>
+            <v-dialog v-model="dialog" persistent max-width="400">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn text v-bind="attrs" v-on="on">
+                  <p class="text-subtitle-1 text-md-h6"></p>
+                  <h6 id="logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket pr-1"></i
+                    >로그아웃
+                  </h6>
                 </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn color="green darken-1" text @click="dialog = false">
-                  아니오
+              </template>
+              <v-card class="pt-3">
+                <v-card-title class="py-3 text-h6 d-flex justify-center">
+                  로그아웃 하시겠습니까?
+                </v-card-title>
+                <v-card-actions>
+                  <v-btn color="green darken-1" text @click="logOut()">
+                    예
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green darken-1" text @click="dialog = false">
+                    아니오
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </div>
+          <div class="d-flex justify-center align-center">
+            <h6 class="pr-3">알림</h6>
+            <v-dialog v-model="alertDialog" width="500">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  x-small
+                  color="green"
+                  fab
+                  elevation="0"
+                  v-bind="attrs"
+                  v-on="on"
+                  >{{ alert }}
                 </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+              </template>
+              <v-card>
+                <v-card-title class="text-h5 grey lighten-2">
+                  알림
+                </v-card-title>
+
+                <v-card-text class="pt-3">
+                  <div>
+                    <span>- 스마트팜 회의 2022/09/02 </span>
+                  </div>
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" text @click="alertDialog = false">
+                    확인
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </div>
         </v-sheet>
         <!-- 미들 -->
         <v-sheet
@@ -115,12 +158,14 @@ export default {
   components: { AppCalendar, AppMake, AppDelete },
   data() {
     return {
+      alert: 1,
       items: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard' },
         { title: 'Photos', icon: 'mdi-image' },
         { title: 'About', icon: 'mdi-help-box' },
       ],
       count: 1,
+      alertDialog: false,
       dialog: false,
       right: null,
       // 미니달력
